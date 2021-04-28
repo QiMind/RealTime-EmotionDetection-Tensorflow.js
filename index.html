@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="js/dataset.js"></script>
+    <script src="js/webcam_hook.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <v-app id="inspire">
+        <v-main>
+          <v-container>
+			  <v-row>
+				<v-col>
+						<div class="pa-10">
+						  <video
+							autoplay
+							playsinline
+							muted
+							id="wc"
+							width="1024"
+							height="720"
+						  ></video>
+						</div>
+					<v-container class="justify-center">
+						<v-card-actions class="justify-center">
+							<v-btn class="pa-2 ma-2" elevation="3" outlined>Happy</v-btn>
+							<v-btn class="pa-2 ma-2" elevation="3" outlined>Sad</v-btn>
+							<v-btn class="pa-2 ma-2" elevation="3" outlined>Angry</v-btn>
+							<v-btn class="pa-2 ma-2" elevation="3" outlined>Scared</v-btn>
+							<v-btn class="pa-2 ma-2" elevation="3" outlined>Calm</v-btn>
+						</v-card-actions>
+					</v-container>
+				  </v-col>
+				  <v-col class="pa-10">
+					<v-container class="mb-10">
+						<v-card-actions class="justify-center">
+							<v-btn class="ma-2" elevation="3" outlined>Train</v-btn>
+							<v-btn class="ma-2" elevation="3" outlined>Start</v-btn>
+							<v-btn class="ma-2" elevation="3" outlined>Stop</v-btn>
+						</v-card-actions>
+					  </v-container>
+
+						<v-simple-table class="mt-10 mb-10">
+							<template v-slot:default>
+							  <thead>
+								<tr>
+								  <th class="text-left">
+									Category
+								  </th>
+								  <th class="text-left">
+									Samples
+								  </th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr
+								  v-for="item in category"
+								  :key="item.name"
+								>
+								  <td>{{ item.name }}</td>
+								  <td>{{ item.samples }}</td>
+								</tr>
+							  </tbody>
+							</template>
+						  </v-simple-table>
+
+						  <v-container>
+							  <h1>PREDICTION:</h1>
+							  <div id="itemPred"></div>
+						  </v-container>
+
+				  </v-col>
+			  </v-row>
+          </v-container>
+        </v-main>
+      </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/index2.js"></script>
+  </body>
+</html>
